@@ -378,12 +378,12 @@ components:
           type: string
         type:
           type: string
-          enum: [Single, Double, Suite]
+          enum: [ Single, Double, Suite ]
         capacity:
           type: integer
         status:
           type: string
-          enum: [Available, Booked]
+          enum: [ Available, Booked ]
         pricePerNight:
           type: number
           format: float

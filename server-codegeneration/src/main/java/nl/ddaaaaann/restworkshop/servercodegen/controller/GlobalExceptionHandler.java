@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-  @ExceptionHandler({GuestNotFoundException.class, ReservationNotFoundException.class, RoomNotFoundException.class})
+  @ExceptionHandler({
+      GuestNotFoundException.class,
+      ReservationNotFoundException.class,
+      RoomNotFoundException.class
+  })
   public ResponseEntity<String> handleNotFoundException(GuestNotFoundException ex) {
     return ResponseEntity.status(HttpStatus.NOT_FOUND)
         .body(ex.getMessage());

@@ -10,13 +10,10 @@ import nl.ddaaaaann.rest.hotel.api.GuestApi;
 import nl.ddaaaaann.rest.hotel.model.GuestCreateDto;
 import nl.ddaaaaann.rest.hotel.model.GuestDto;
 import nl.ddaaaaann.rest.hotel.model.GuestUpdateDto;
-import nl.ddaaaaann.rest.hotel.model.ReservationDto;
 import nl.ddaaaaann.restworkshop.servercodegen.exception.GuestNotFoundException;
 import nl.ddaaaaann.restworkshop.servercodegen.mapper.GuestMapper;
 import nl.ddaaaaann.restworkshop.servercodegen.model.Guest;
-import nl.ddaaaaann.restworkshop.servercodegen.model.Reservation;
 import nl.ddaaaaann.restworkshop.servercodegen.service.GuestService;
-import nl.ddaaaaann.restworkshop.servercodegen.service.ReservationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 

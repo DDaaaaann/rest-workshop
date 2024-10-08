@@ -3,7 +3,6 @@ package nl.ddaaaaann.restworkshop.servercodegen.service;
 import java.util.List;
 import java.util.Optional;
 import nl.ddaaaaann.rest.hotel.model.GuestCreateDto;
-import nl.ddaaaaann.rest.hotel.model.GuestDto;
 import nl.ddaaaaann.rest.hotel.model.GuestUpdateDto;
 import nl.ddaaaaann.restworkshop.servercodegen.model.Guest;
 

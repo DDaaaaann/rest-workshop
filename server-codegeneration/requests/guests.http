@@ -58,7 +58,7 @@ Content-Type: application/json
 
 {
   "name": "Robert Johnson",
-  "email": "robert.johnson@example.com",
+  "email": "robert.johnson@example.com"
 }
 
 ###
@@ -68,7 +68,7 @@ PATCH http://localhost:8080/guests/2
 Content-Type: application/json
 
 {
-  "email": "alice.j.smith@example.com",
+  "email": "alice.j.smith@example.com"
 }
 
 ###

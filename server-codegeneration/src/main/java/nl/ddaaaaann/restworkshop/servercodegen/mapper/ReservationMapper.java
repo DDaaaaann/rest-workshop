@@ -15,5 +15,6 @@ public interface ReservationMapper {
   ReservationDto toDto(Reservation entity);
 
   Reservation toEntity(ReservationDto dto);
+
   Reservation toEntity(ReservationCreateDto dto);
 }

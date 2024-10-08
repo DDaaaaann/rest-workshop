@@ -3,11 +3,11 @@ package nl.ddaaaaann.restworkshop.servercodegen.model;
 import java.time.LocalDateTime;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 @Data
 @NoArgsConstructor
 public class Guest {
+
   private Long id;
   private String name;
   private String email;
