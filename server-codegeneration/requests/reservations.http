@@ -1,0 +1,73 @@
+### Create a new reservation - John Doe (Guest ID: 1, Room ID: 101)
+POST http://localhost:8080/reservations
+Content-Type: application/json
+
+{
+  "guestId": 1,
+  "roomId": 101,
+  "checkIn": "2024-10-10",
+  "checkOut": "2024-10-15"
+}
+
+###
+
+### Create a new reservation - Alice Smith (Guest ID: 2, Room ID: 102)
+POST http://localhost:8080/reservations
+Content-Type: application/json
+
+{
+  "guestId": 2,
+  "roomId": 102,
+  "checkIn": "2024-11-01",
+  "checkOut": "2024-11-05"
+}
+
+###
+
+### Get all reservations
+GET http://localhost:8080/reservations
+Accept: application/json
+
+###
+
+### Get a specific reservation by ID (Reservation ID: 1)
+GET http://localhost:8080/reservations/1
+Accept: application/json
+
+###
+
+### Update a reservation by ID (Reservation ID: 1) - New dates
+PUT http://localhost:8080/reservations/1
+Content-Type: application/json
+
+{
+  "guestId": 1,
+  "roomId": 101,
+  "checkIn": "2024-10-11",
+  "checkOut": "2024-10-16"
+}
+
+###
+
+### Update a reservation by ID (Reservation ID: 2) - Change room
+PUT http://localhost:8080/reservations/2
+Content-Type: application/json
+
+{
+  "guestId": 2,
+  "roomId": 103,
+  "checkIn": "2024-11-01",
+  "checkOut": "2024-11-05"
+}
+
+###
+
+### Delete a reservation by ID (Reservation ID: 1)
+DELETE http://localhost:8080/reservations/1
+Accept: application/json
+
+###
+
+### Delete a reservation by ID (Reservation ID: 2)
+DELETE http://localhost:8080/reservations/2
+Accept: application/json

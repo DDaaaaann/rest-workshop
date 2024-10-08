@@ -1,0 +1,21 @@
+### Get all rooms
+GET http://localhost:8080/rooms
+Accept: application/json
+
+###
+
+### Get a specific room by ID (Room ID: 101)
+GET http://localhost:8080/rooms/101
+Accept: application/json
+
+###
+
+### Get a specific room by ID (Room ID: 102)
+GET http://localhost:8080/rooms/102
+Accept: application/json
+
+###
+
+### Get a specific room by ID (Room ID: 103)
+GET http://localhost:8080/rooms/103
+Accept: application/json

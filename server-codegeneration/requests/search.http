@@ -1,0 +1,50 @@
+### Search all resources (rooms, guests, reservations)
+POST http://localhost:8080/_search
+Content-Type: application/json
+
+{
+  "guestName": "John",
+  "roomType": "Single",
+  "reservationDate": "2024-10-10"
+}
+
+###
+
+### Search by guest name (Alice)
+POST http://localhost:8080/_search
+Content-Type: application/json
+
+{
+  "guestName": "Alice"
+}
+
+###
+
+### Search by room type (Suite)
+POST http://localhost:8080/_search
+Content-Type: application/json
+
+{
+  "roomType": "Suite"
+}
+
+###
+
+### Search by reservation date (2024-11-01)
+POST http://localhost:8080/_search
+Content-Type: application/json
+
+{
+  "reservationDate": "2024-11-01"
+}
+
+###
+
+### Search by guest name and reservation date (Alice, Nov 2024)
+POST http://localhost:8080/_search
+Content-Type: application/json
+
+{
+  "guestName": "Alice",
+  "reservationDate": "2024-11-01"
+}

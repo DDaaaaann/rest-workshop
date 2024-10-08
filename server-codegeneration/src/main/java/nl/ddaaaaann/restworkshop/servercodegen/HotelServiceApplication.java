@@ -1,4 +1,4 @@
-package nl.ddaaaaann.workshop.rest.server.codegen;
+package nl.ddaaaaann.restworkshop.servercodegen;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

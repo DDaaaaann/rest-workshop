@@ -1,0 +1,84 @@
+### Create a new guest - John Doe
+POST http://localhost:8080/guests
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "phoneNumber": "123-456-7890"
+}
+
+###
+
+### Create a new guest - Alice Smith
+POST http://localhost:8080/guests
+Content-Type: application/json
+
+{
+  "name": "Alice Smith",
+  "email": "alice.smith@example.com",
+  "phoneNumber": "987-654-3210"
+}
+
+###
+
+### Create a new guest - Bob Johnson
+POST http://localhost:8080/guests
+Content-Type: application/json
+
+{
+  "name": "Bob Johnson",
+  "email": "bob.johnson@example.com",
+  "phoneNumber": "555-666-7777"
+}
+
+###
+
+### Get all guests
+GET http://localhost:8080/guests
+Accept: application/json
+
+###
+
+### Get a specific guest by ID - John Doe (ID 1)
+GET http://localhost:8080/guests/1
+Accept: application/json
+
+###
+
+### Get a specific guest by ID - Alice Smith (ID 2)
+GET http://localhost:8080/guests/2
+Accept: application/json
+
+###
+
+### Update a guest by ID - Bob Johnson (ID 3)
+PATCH http://localhost:8080/guests/3
+Content-Type: application/json
+
+{
+  "name": "Robert Johnson",
+  "email": "robert.johnson@example.com",
+}
+
+###
+
+### Update a guest by ID - Alice Smith (ID 2)
+PATCH http://localhost:8080/guests/2
+Content-Type: application/json
+
+{
+  "email": "alice.j.smith@example.com",
+}
+
+###
+
+### Delete a guest by ID - John Doe (ID 1)
+DELETE http://localhost:8080/guests/1
+Accept: application/json
+
+###
+
+### Delete a guest by ID - Bob Johnson (ID 3)
+DELETE http://localhost:8080/guests/3
+Accept: application/json
