@@ -1,0 +1,34 @@
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("Inside replace code")
+    // Select all <pre> elements with class "mermaid"
+    const mermaidBlocks = document.querySelectorAll('pre.mermaid');
+
+    console.log(`Found ${mermaidBlocks.length} mermaid blocks`); // Debugging line
+
+    mermaidBlocks.forEach(block => {
+      // Get the inner HTML of the <code> block
+      const codeContent = block.querySelector('code').innerHTML; // Select the inner content of <code>
+
+      // Create a new <div> element
+      const newPre = document.createElement('pre');
+      newPre.className = 'mermaid'; // Set the class to 'mermaid'
+      newPre.innerHTML = codeContent; // Set the inner HTML to the content of <code>
+
+      // Replace the <pre> block with the new <div>
+      block.parentNode.replaceChild(newPre, block);
+      console.log("Replaced <pre> with <div>"); // Debugging line
+    });
+
+
+
+    // // Initialize Mermaid AFTER DOM modification
+    // setTimeout(function () {
+    //   import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    //   mermaid.initialize({startOnLoad: true});
+    // }, 10);
+  });
+</script>

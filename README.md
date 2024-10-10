@@ -13,7 +13,10 @@ under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).
 
 # Pandoc (for presentation generation only)
 
-Install pandoc
+Install pandoc for generating slides
 
 - `brew install pandoc`
 - `sudo apt-get install pandoc`
+
+And generate the presentation using `pandoc -t revealjs --variable theme="simple" -s -o presentation.html slides.md`
+pandoc -t revealjs -s -o presentation.html slides.md --slide-level=3 --variable theme=white --include-in-header=header.html

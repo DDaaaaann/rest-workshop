@@ -75,7 +75,8 @@
               <goal>generate</goal>
             </goals>
             <configuration>
-              <inputSpec>${project.basedir}/../openapi.yaml</inputSpec>
+              <inputSpec>${project.basedir}/openapi.yaml</inputSpec>
+              <output>${project.build.directory}/generated-sources</output>
               <generatorName>spring</generatorName>
               <modelPackage>nl.ddaaaaann.rest.hotel.model</modelPackage>
               <apiPackage>nl.ddaaaaann.rest.hotel.api</apiPackage>
