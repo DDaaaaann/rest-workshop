@@ -1,9 +1,11 @@
 package nl.ddaaaaann.restworkshop.servercodegen.controller;
 
+import static org.springframework.http.ResponseEntity.created;
 import static org.springframework.http.ResponseEntity.noContent;
 import static org.springframework.http.ResponseEntity.notFound;
 import static org.springframework.http.ResponseEntity.ok;
 
+import java.net.URI;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import nl.ddaaaaann.rest.hotel.api.ReservationApi;
@@ -13,6 +15,7 @@ import nl.ddaaaaann.restworkshop.servercodegen.exception.ReservationNotFoundExce
 import nl.ddaaaaann.restworkshop.servercodegen.mapper.ReservationMapper;
 import nl.ddaaaaann.restworkshop.servercodegen.model.Reservation;
 import nl.ddaaaaann.restworkshop.servercodegen.service.ReservationService;
+import nl.ddaaaaann.restworkshop.servercodegen.util.LocationUriUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,11 +27,10 @@ public class ReservationController implements ReservationApi {
   private final ReservationMapper reservationMapper;
 
   @Override
-  public ResponseEntity<ReservationDto> createReservation(
-      final ReservationCreateDto reservationCreateDto) {
+  public ResponseEntity<Void> createReservation(final ReservationCreateDto reservationCreateDto) {
     final Reservation createdReservation = reservationService.create(reservationCreateDto);
-    final ReservationDto createdReservationDto = reservationMapper.toDto(createdReservation);
-    return ok(createdReservationDto);
+    final URI location = LocationUriUtil.get(createdReservation.getId());
+    return created(location).build();
   }
 
   @Override

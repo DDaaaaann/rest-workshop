@@ -49,7 +49,7 @@ _An architectural style for designing networked applications._
   - Examples:
     - **Rooms**: `/guests`
     - **Room**: `/rooms/{roomNumber}`
-    - **Reservation**: `/room/{roomId}/reservations`
+    - **Reservation**: `/rooms/{roomNumber}/reservations`
 - **Representation**: JSON, XML, etc.
 
 ## Representation
@@ -90,103 +90,129 @@ _An architectural style for designing networked applications._
 
 
 # HTTP Responses
-- **Standard Status Codes**:
-  - **200 OK**, **201 Created**, **204 No Content**, **400 Bad Request**, **404 Not Found**, **500 Internal Server Error**
-- **Visual**: [Add table summarizing status codes with examples]
+
+## Categories
+![Standard HTTP methods](images/http-responses.png)
+<sub><sup>[Source: restfulapi](https://restfulapi.net/http-status-codes/)</sup></sub>
+
+## Status codes
+  - **200 OK** 
+  - **201 Created**
+  - **204 No Content**
+  - **400 Bad Request** 
+  - **404 Not Found**
+  - **500 Internal Server Error**
+
+# Stateless communication
+
+##
+
+> Every request from client to server must contain all of the information necessary to understand the request.\
+> 
+> The server cannot take advantage of any stored session context on the server.
 
 
-# Statelessness
-> One of the key constraints of the REST architectural style is stateless communication between client and server. It means that every request from client to server must contain all of the information necessary to understand the request
+
+# API-First Approach
+
+##
+
+A development strategy in which the design and development of APIs take precedence over other software components.
 
 
+## Pro's
+- **Better collaboration and communication:** clear specification
+- **Improved API design:** upfront focus on API design
+- **Generation**: generating server and client code
 
 
-## API-First Approach
-- **Definition**: Design APIs before implementation.
-- **Benefits**:
-  - Clarity, Collaboration, Documentation
-- **Visual**: [Flowchart of API-First design process]
+## Con's
+- **Upfront investment:** time-consuming and evolving requirements
+- <p class="fragment strike">**Potential for divergence:** implemented code diverges from the API contract</p>
 
----
-
-## Pros and Cons of API-First
-- **Pros**: Clarity, Flexibility, Documentation
-- **Cons**: Upfront Investment, Change Management
-
----
 
 # Introduction to OpenAPI
 - **Definition**: A standard format for defining APIs.
-- **Features**:
-  - Language-agnostic, Supports code generation
-- **Example**: Show an OpenAPI document snippet.
+- **Features**: Language-agnostic, Supports code generation.
 
----
+##
+
+```yaml
+openapi: 3.0.3
+info:
+  title: Hotel API
+  version: 1.0.0
+paths:
+  /guests/{id}:
+    get:
+      summary: Get a guest by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Guest'
+        '404':
+          description: Guest not found
+
+```
+
 
 # Visualizing the API World
-- **API Relationships**:
-  - **Hotel** ↔ **Room** ↔ **Reservation**
-- **Diagram**: [Insert visual diagram]
 
----
+## Hotel
+- **Rooms**
+- **Guests**
+- **Reservations**
 
-# Workshop Overview
-- **Objective**: Develop a RESTful API for managing hotels, rooms, and reservations.
+## Room
+- roomNumber
+- type
+- capacity
+- status
+- pricePerNight
+
+## Guest
+- name
+- email
+- phoneNumber
+
+## Reservation
+- Guest
+- Room
+- checkIn
+- checkOut
+
+
+# Workshop
+
+## Overview
+- **Objective**: Develop a RESTful API for managing rooms, guests, and reservations.
 - **Focus Areas**: Code generation, Service layer implementation, Hands-on session.
 
----
+## Details
+Clone repo: [rest-workshops](https://github.com/DDaaaaann/rest-workshop)
 
-# Code Implementation Tips
-- **What to Remove**: Unused classes, Overly complex logic.
-- **Best Practices**: Simplicity, Error handling.
+Work in teams of two.
 
----
+## Tips
+- Implement all TODO's
+- Use [editor.swagger](https://editor.swagger.io)
+
 
 # Future Workshops
 - **Topics**: Client Code Generation, Error Handling, Unit Testing, HATEOAS.
 
----
 
-# Conclusion
-- **Key Takeaways**: [Summarize main points]
-- **Call to Action**: Apply learnings to projects!
+# Feedback!
 
----
+# Questions?
 
-# Feedback
-- **Questions/Feedback**: [Encourage participants to share feedback]
-
----
-
-# Q&A
-- Open the floor for questions.
-
-___
-
-## Example OpenAPI Specification
-```yaml
-paths:
-  /hotels:
-    get:
-      summary: List all hotels
-  /hotels/{hotelId}/rooms:
-    get:
-      summary: List rooms in a hotel
-```
----
-
-# Horizontal Slide 1
-
-Content for slide 1.
-
-## Vertical Slide 1.1
-
-Content for vertical slide 1.1.
-
-## Vertical Slide 1.2
-
-Content for vertical slide 1.2.
-
-# Horizontal Slide 2
-
-Content for slide 2.

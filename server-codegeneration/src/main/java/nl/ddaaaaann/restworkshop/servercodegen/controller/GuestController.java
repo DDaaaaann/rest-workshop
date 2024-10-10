@@ -1,9 +1,11 @@
 package nl.ddaaaaann.restworkshop.servercodegen.controller;
 
+import static org.springframework.http.ResponseEntity.created;
 import static org.springframework.http.ResponseEntity.noContent;
 import static org.springframework.http.ResponseEntity.notFound;
 import static org.springframework.http.ResponseEntity.ok;
 
+import java.net.URI;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import nl.ddaaaaann.rest.hotel.api.GuestApi;
@@ -14,6 +16,7 @@ import nl.ddaaaaann.restworkshop.servercodegen.exception.GuestNotFoundException;
 import nl.ddaaaaann.restworkshop.servercodegen.mapper.GuestMapper;
 import nl.ddaaaaann.restworkshop.servercodegen.model.Guest;
 import nl.ddaaaaann.restworkshop.servercodegen.service.GuestService;
+import nl.ddaaaaann.restworkshop.servercodegen.util.LocationUriUtil;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,11 +28,12 @@ public class GuestController implements GuestApi {
   private final GuestMapper guestMapper;
 
   @Override
-  public ResponseEntity<GuestDto> createGuest(final GuestCreateDto guestCreateDto) {
+  public ResponseEntity<Void> createGuest(final GuestCreateDto guestCreateDto) {
     final Guest createdGuest = guestService.create(guestCreateDto);
-    final GuestDto createdGuestDto = guestMapper.toDto(createdGuest);
 
-    return ok(createdGuestDto);
+    final URI location = LocationUriUtil.get(createdGuest.getId());
+
+    return created(location).build();
   }
 
   @Override

@@ -1,8 +1,9 @@
-# Workshops
+# Rest principles and the art of code generation in an API-First Approach.
 
-## REST
+## Server code generation
 
-### Rest principles and the art of code generation
+Workshop about generating server code from an API first perspective.
+For more details see the [README](server-codegeneration/README.md)
 
 # License
 
@@ -19,4 +20,4 @@ Install pandoc for generating slides
 - `sudo apt-get install pandoc`
 
 And generate the presentation using `pandoc -t revealjs --variable theme="simple" -s -o presentation.html slides.md`
-pandoc -t revealjs -s -o presentation.html slides.md --slide-level=3 --variable theme=white --include-in-header=header.html
+pandoc -t revealjs -s -o ../presentation.html slides.md --slide-level=3 --variable theme=white --include-in-header=header.html

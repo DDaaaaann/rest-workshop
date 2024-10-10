@@ -43,11 +43,7 @@ paths:
               $ref: '#/components/schemas/GuestCreate'
       responses:
         '201':
-          description: Guest created
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Guest'
+          $ref: '#/components/responses/CreatedWithLocation'
 
   /guests/{guestId}:
     get:
@@ -234,11 +230,7 @@ paths:
               $ref: '#/components/schemas/ReservationCreate'
       responses:
         '201':
-          description: Reservation created successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Reservation'
+          $ref: '#/components/responses/CreatedWithLocation'
 
   /reservations/{reservationId}:
     get:
@@ -327,6 +319,14 @@ paths:
                 $ref: '#/components/schemas/SearchResults'
 
 components:
+  responses:
+    CreatedWithLocation:
+      description: Resource created successfully
+      headers:
+        Location:
+          description: URI of the newly created resource
+          schema:
+            type: string
   schemas:
     GuestBase:
       type: object

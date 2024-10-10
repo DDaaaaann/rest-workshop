@@ -128,6 +128,7 @@
       // }, 10);
     });
   </script>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="reveal">
@@ -206,7 +207,7 @@ class="title-slide slide level1">
 <li><strong>Rooms</strong>: <code>/guests</code></li>
 <li><strong>Room</strong>: <code>/rooms/{roomNumber}</code></li>
 <li><strong>Reservation</strong>:
-<code>/room/{roomNumber}/reservations</code></li>
+<code>/rooms/{roomNumber}/reservations</code></li>
 </ul></li>
 </ul></li>
 <li><strong>Representation</strong>: JSON, XML, etc.</li>
@@ -236,7 +237,8 @@ class="title-slide slide level1">
 <h2>Relationships</h2>
 <ul>
 <li>Linking to other resources</li>
-<li>Reservation links to <code>Guest</code> and <code>Room</code>
+<li><code>Reservation</code> links to <code>Guest</code> and
+<code>Room</code>
 <ul>
 <li><code>/rooms/123/reservations</code></li>
 <li><code>/guests/45/reservations</code></li>
@@ -253,7 +255,6 @@ class="title-slide slide level1">
 <li><strong>GET</strong>, <strong>POST</strong>,
 <strong>PUT/PATCH</strong>, <strong>DELETE</strong></li>
 </ul></li>
-<li><strong>Examples</strong>: Show example requests and responses.</li>
 </ul>
 </section>
 <section id="section" class="title-slide slide level2">
@@ -285,56 +286,79 @@ href="https://gitdocumentatie.logius.nl/publicatie/api/adr/1.0/#http-methods">So
 Logius Standaard</a></sup></sub></p>
 </section>
 </section>
+<section>
 <section id="http-responses" class="title-slide slide level1">
 <h1>HTTP Responses</h1>
-<ul>
-<li><strong>Standard Status Codes</strong>:
-<ul>
-<li><strong>200 OK</strong>, <strong>201 Created</strong>, <strong>204
-No Content</strong>, <strong>400 Bad Request</strong>, <strong>404 Not
-Found</strong>, <strong>500 Internal Server Error</strong></li>
-</ul></li>
-<li><strong>Visual</strong>: [Add table summarizing status codes with
-examples]</li>
-</ul>
+
+</section>
+<section id="categories" class="title-slide slide level2">
+<h2>Categories</h2>
+<p><img data-src="images/http-responses.png"
+alt="Standard HTTP methods" /> <sub><sup><a
+href="https://restfulapi.net/http-status-codes/">Source:
+restfulapi</a></sup></sub></p>
 </section>
 
+<section id="status-codes" class="title-slide slide level2">
+<h2>Status codes</h2>
+<ul>
+<li><strong>200 OK</strong></li>
+<li><strong>201 Created</strong></li>
+<li><strong>204 No Content</strong></li>
+<li><strong>400 Bad Request</strong></li>
+<li><strong>404 Not Found</strong></li>
+<li><strong>500 Internal Server Error</strong></li>
+</ul>
+</section>
+</section>
 <section>
-<section id="statelessness" class="title-slide slide level1">
-<h1>Statelessness</h1>
+<section id="stateless-communication" class="title-slide slide level1">
+<h1>Stateless communication</h1>
+
+</section>
+<section id="section-2" class="title-slide slide level2">
+<h2></h2>
 <blockquote>
-<p>One of the key constraints of the REST architectural style is
-stateless communication between client and server. It means that every
-request from client to server must contain all of the information
-necessary to understand the request</p>
+<p>Every request from client to server must contain all of the
+information necessary to understand the request.<br />
+</p>
+<p>The server cannot take advantage of any stored session context on the
+server.</p>
 </blockquote>
 </section>
-<section id="api-first-approach" class="title-slide slide level2">
-<h2>API-First Approach</h2>
+</section>
+<section>
+<section id="api-first-approach" class="title-slide slide level1">
+<h1>API-First Approach</h1>
+
+</section>
+<section id="section-3" class="title-slide slide level2">
+<h2></h2>
+<p>A development strategy in which the design and development of APIs
+take precedence over other software components.</p>
+</section>
+
+<section id="pros" class="title-slide slide level2">
+<h2>Pro’s</h2>
 <ul>
-<li><strong>Definition</strong>: Design APIs before implementation.</li>
-<li><strong>Benefits</strong>:
-<ul>
-<li>Clarity, Collaboration, Documentation</li>
-</ul></li>
-<li><strong>Visual</strong>: [Flowchart of API-First design
-process]</li>
+<li><strong>Better collaboration and communication:</strong> clear
+specification</li>
+<li><strong>Improved API design:</strong> upfront focus on API
+design</li>
+<li><strong>Generation</strong>: generating server and client code</li>
 </ul>
 </section>
-<section class="slide level3">
 
-</section>
-
-<section id="pros-and-cons-of-api-first"
-class="title-slide slide level2">
-<h2>Pros and Cons of API-First</h2>
+<section id="cons" class="title-slide slide level2">
+<h2>Con’s</h2>
 <ul>
-<li><strong>Pros</strong>: Clarity, Flexibility, Documentation</li>
-<li><strong>Cons</strong>: Upfront Investment, Change Management</li>
+<li><strong>Upfront investment:</strong> time-consuming and evolving
+requirements</li>
+<li><p class="fragment strike">
+<strong>Potential for divergence:</strong> implemented code diverges
+from the API contract
+</p></li>
 </ul>
-</section>
-<section class="slide level3">
-
 </section>
 </section>
 <section>
@@ -343,58 +367,114 @@ class="title-slide slide level2">
 <ul>
 <li><strong>Definition</strong>: A standard format for defining
 APIs.</li>
-<li><strong>Features</strong>:
-<ul>
-<li>Language-agnostic, Supports code generation</li>
-</ul></li>
-<li><strong>Example</strong>: Show an OpenAPI document snippet.</li>
+<li><strong>Features</strong>: Language-agnostic, Supports code
+generation.</li>
 </ul>
 </section>
-<section class="slide level3">
-
-</section></section>
+<section id="section-4" class="title-slide slide level2">
+<h2></h2>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">openapi</span><span class="kw">:</span><span class="at"> </span><span class="fl">3.0.3</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">info</span><span class="kw">:</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">title</span><span class="kw">:</span><span class="at"> Hotel API</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">version</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.0.0</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">paths</span><span class="kw">:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">/guests/{id}</span><span class="kw">:</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">get</span><span class="kw">:</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">summary</span><span class="kw">:</span><span class="at"> Get a guest by ID</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">parameters</span><span class="kw">:</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> id</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">in</span><span class="kw">:</span><span class="at"> path</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">required</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">schema</span><span class="kw">:</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="fu">type</span><span class="kw">:</span><span class="at"> string</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">responses</span><span class="kw">:</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">&#39;200&#39;</span><span class="kw">:</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">content</span><span class="kw">:</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">application/json</span><span class="kw">:</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="at">            </span><span class="fu">schema</span><span class="kw">:</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="at">              </span><span class="fu">type</span><span class="kw">:</span><span class="at"> array</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="at">              </span><span class="fu">items</span><span class="kw">:</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="at">                </span><span class="fu">$ref</span><span class="kw">:</span><span class="at"> </span><span class="st">&#39;#/components/schemas/Guest&#39;</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">&#39;404&#39;</span><span class="kw">:</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Guest not found</span></span></code></pre></div>
+</section>
+</section>
 <section>
 <section id="visualizing-the-api-world"
 class="title-slide slide level1">
 <h1>Visualizing the API World</h1>
+
+</section>
+<section id="hotel" class="title-slide slide level2">
+<h2>Hotel</h2>
 <ul>
-<li><strong>API Relationships</strong>:
-<ul>
-<li><strong>Hotel</strong> ↔︎ <strong>Room</strong> ↔︎
-<strong>Reservation</strong></li>
-</ul></li>
-<li><strong>Diagram</strong>: [Insert visual diagram]</li>
+<li><strong>Rooms</strong></li>
+<li><strong>Guests</strong></li>
+<li><strong>Reservations</strong></li>
 </ul>
 </section>
-<section class="slide level3">
 
-</section></section>
+<section id="room" class="title-slide slide level2">
+<h2>Room</h2>
+<ul>
+<li>roomNumber</li>
+<li>type</li>
+<li>capacity</li>
+<li>status</li>
+<li>pricePerNight</li>
+</ul>
+</section>
+
+<section id="guest" class="title-slide slide level2">
+<h2>Guest</h2>
+<ul>
+<li>name</li>
+<li>email</li>
+<li>phoneNumber</li>
+</ul>
+</section>
+
+<section id="reservation" class="title-slide slide level2">
+<h2>Reservation</h2>
+<ul>
+<li>Guest</li>
+<li>Room</li>
+<li>checkIn</li>
+<li>checkOut</li>
+</ul>
+</section>
+</section>
 <section>
-<section id="workshop-overview" class="title-slide slide level1">
-<h1>Workshop Overview</h1>
+<section id="workshop" class="title-slide slide level1">
+<h1>Workshop</h1>
+
+</section>
+<section id="overview" class="title-slide slide level2">
+<h2>Overview</h2>
 <ul>
 <li><strong>Objective</strong>: Develop a RESTful API for managing
-hotels, rooms, and reservations.</li>
+rooms, guests, and reservations.</li>
 <li><strong>Focus Areas</strong>: Code generation, Service layer
 implementation, Hands-on session.</li>
 </ul>
 </section>
-<section class="slide level3">
 
-</section></section>
-<section>
-<section id="code-implementation-tips" class="title-slide slide level1">
-<h1>Code Implementation Tips</h1>
+<section id="details" class="title-slide slide level2">
+<h2>Details</h2>
+<p>Clone repo: <a
+href="https://github.com/DDaaaaann/rest-workshop">rest-workshops</a></p>
+<p>Work in teams of two.</p>
+</section>
+
+<section id="tips" class="title-slide slide level2">
+<h2>Tips</h2>
 <ul>
-<li><strong>What to Remove</strong>: Unused classes, Overly complex
-logic.</li>
-<li><strong>Best Practices</strong>: Simplicity, Error handling.</li>
+<li>Implement all TODO’s</li>
+<li>Use <a href="https://editor.swagger.io">editor.swagger</a></li>
 </ul>
 </section>
-<section class="slide level3">
-
-</section></section>
-<section>
+</section>
 <section id="future-workshops" class="title-slide slide level1">
 <h1>Future Workshops</h1>
 <ul>
@@ -402,75 +482,15 @@ logic.</li>
 Unit Testing, HATEOAS.</li>
 </ul>
 </section>
-<section class="slide level3">
 
-</section></section>
-<section>
-<section id="conclusion" class="title-slide slide level1">
-<h1>Conclusion</h1>
-<ul>
-<li><strong>Key Takeaways</strong>: [Summarize main points]</li>
-<li><strong>Call to Action</strong>: Apply learnings to projects!</li>
-</ul>
-</section>
-<section class="slide level3">
-
-</section></section>
-<section>
 <section id="feedback" class="title-slide slide level1">
-<h1>Feedback</h1>
-<ul>
-<li><strong>Questions/Feedback</strong>: [Encourage participants to
-share feedback]</li>
-</ul>
-</section>
-<section class="slide level3">
-
-</section></section>
-<section>
-<section id="qa" class="title-slide slide level1">
-<h1>Q&amp;A</h1>
-<ul>
-<li>Open the floor for questions.</li>
-</ul>
-</section>
-<section class="slide level3">
+<h1>Feedback!</h1>
 
 </section>
-<section id="example-openapi-specification"
-class="title-slide slide level2">
-<h2>Example OpenAPI Specification</h2>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">paths</span><span class="kw">:</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">/hotels</span><span class="kw">:</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">get</span><span class="kw">:</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">summary</span><span class="kw">:</span><span class="at"> List all hotels</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">/hotels/{hotelId}/rooms</span><span class="kw">:</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">get</span><span class="kw">:</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">summary</span><span class="kw">:</span><span class="at"> List rooms in a hotel</span></span></code></pre></div>
-</section>
-<section class="slide level3">
 
-</section>
-</section>
-<section>
-<section id="horizontal-slide-1" class="title-slide slide level1">
-<h1>Horizontal Slide 1</h1>
-<p>Content for slide 1.</p>
-</section>
-<section id="vertical-slide-1.1" class="title-slide slide level2">
-<h2>Vertical Slide 1.1</h2>
-<p>Content for vertical slide 1.1.</p>
-</section>
+<section id="questions" class="title-slide slide level1">
+<h1>Questions?</h1>
 
-<section id="vertical-slide-1.2" class="title-slide slide level2">
-<h2>Vertical Slide 1.2</h2>
-<p>Content for vertical slide 1.2.</p>
-</section>
-</section>
-<section id="horizontal-slide-2" class="title-slide slide level1">
-<h1>Horizontal Slide 2</h1>
-<p>Content for slide 2.</p>
 </section>
     </div>
   </div>
