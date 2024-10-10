@@ -29,7 +29,8 @@ public class GuestController implements GuestApi {
 
   @Override
   public ResponseEntity<Void> createGuest(final GuestCreateDto guestCreateDto) {
-    final Guest createdGuest = guestService.create(guestCreateDto);
+    final Guest guestModel = guestMapper.toModel(guestCreateDto);
+    final Guest createdGuest = guestService.create(guestModel);
 
     final URI location = LocationUriUtil.get(createdGuest.getId());
 
@@ -60,7 +61,8 @@ public class GuestController implements GuestApi {
 
   @Override
   public ResponseEntity<GuestDto> updateGuestById(final Long guestId, final GuestUpdateDto guestUpdateDto) {
-    final Guest guest = guestService.update(guestId, guestUpdateDto);
+    final Guest model = guestMapper.toModel(guestUpdateDto);
+    final Guest guest = guestService.update(guestId, model);
     return ok(guestMapper.toDto(guest));
   }
 }

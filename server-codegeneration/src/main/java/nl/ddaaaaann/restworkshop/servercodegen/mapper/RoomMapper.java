@@ -8,6 +8,6 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface RoomMapper {
 
-  RoomDto toDto(Room entity);
+  RoomDto toDto(Room model);
 
 }

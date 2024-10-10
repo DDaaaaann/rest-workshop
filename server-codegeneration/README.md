@@ -1,5 +1,7 @@
 # Generating server code
 
+You can find the presentation here: [Presentation](http://localhost:63342/rest-workshop/server-codegeneration/slides/presentation.html)
+
 ## Instructions
 - Write an Api specification
   - Start at [editor.swagger.io](https://editor.swagger.io/)
@@ -14,4 +16,11 @@
   - Use the generated code to implement your controllers
   - Depend on the provided services
 
-[Slides](http://localhost:63342/rest-workshop/server-codegeneration/slides/presentation.html)
+- Test code
+  - There are request provided in de requests folder
+  - See: [guests.http](requests/guests.http)
+  - See: [reservations.http](requests/reservations.http)
+  - See: [rooms.http](requests/rooms.http)
+  - See: [search.http](requests/search.http)
+
+

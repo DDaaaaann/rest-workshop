@@ -7,10 +7,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
-import nl.ddaaaaann.rest.hotel.model.ReservationCreateDto;
-import nl.ddaaaaann.rest.hotel.model.ReservationDto;
 import nl.ddaaaaann.restworkshop.servercodegen.exception.ReservationNotFoundException;
-import nl.ddaaaaann.restworkshop.servercodegen.mapper.ReservationMapper;
 import nl.ddaaaaann.restworkshop.servercodegen.model.Reservation;
 import nl.ddaaaaann.restworkshop.servercodegen.service.ReservationService;
 import org.springframework.stereotype.Service;
@@ -22,13 +19,12 @@ public class ReservationServiceImpl implements ReservationService {
   private final AtomicLong idCounter = new AtomicLong(1);
 
   @Override
-  public Reservation create(final ReservationCreateDto reservationCreateDto) {
-    final Reservation newReservation = ReservationMapper.INSTANCE.toEntity(reservationCreateDto);
-    newReservation.setId(idCounter.getAndIncrement());
-    newReservation.setCreatedAt(LocalDateTime.now());
+  public Reservation create(final Reservation reservation) {
+    reservation.setId(idCounter.getAndIncrement());
+    reservation.setCreatedAt(LocalDateTime.now());
 
-    reservations.add(newReservation);
-    return newReservation;
+    reservations.add(reservation);
+    return reservation;
   }
 
   @Override
@@ -44,13 +40,12 @@ public class ReservationServiceImpl implements ReservationService {
   }
 
   @Override
-  public Reservation update(final Long id, final ReservationDto reservationDto) {
+  public Reservation update(final Long id, final Reservation updateReservation) {
     return findById(id).map(reservation -> {
-      reservation.setId(reservationDto.getId());
-      reservation.setGuestId(reservationDto.getGuestId());
-      reservation.setRoomNumber(reservationDto.getRoomNumber());
-      reservation.setCheckIn(reservationDto.getCheckIn());
-      reservation.setCheckOut(reservationDto.getCheckOut());
+      reservation.setGuestId(updateReservation.getGuestId());
+      reservation.setRoomNumber(updateReservation.getRoomNumber());
+      reservation.setCheckIn(updateReservation.getCheckIn());
+      reservation.setCheckOut(updateReservation.getCheckOut());
       return reservation;
     }).orElseThrow(() -> new ReservationNotFoundException(id));
   }

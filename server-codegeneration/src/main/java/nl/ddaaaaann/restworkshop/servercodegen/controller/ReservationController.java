@@ -28,7 +28,8 @@ public class ReservationController implements ReservationApi {
 
   @Override
   public ResponseEntity<Void> createReservation(final ReservationCreateDto reservationCreateDto) {
-    final Reservation createdReservation = reservationService.create(reservationCreateDto);
+    final Reservation reservationModel = reservationMapper.toModel(reservationCreateDto);
+    final Reservation createdReservation = reservationService.create(reservationModel);
     final URI location = LocationUriUtil.get(createdReservation.getId());
     return created(location).build();
   }
@@ -72,9 +73,9 @@ public class ReservationController implements ReservationApi {
   }
 
   @Override
-  public ResponseEntity<ReservationDto> updateReservationById(final Long reservationId,
-      final ReservationDto reservationDto) {
-    final Reservation reservation = reservationService.update(reservationId, reservationDto);
+  public ResponseEntity<ReservationDto> updateReservationById(final Long reservationId, final ReservationDto reservationDto) {
+    final Reservation model = reservationMapper.toModel(reservationDto);
+    final Reservation reservation = reservationService.update(reservationId, model);
     return ok(reservationMapper.toDto(reservation));
   }
 }

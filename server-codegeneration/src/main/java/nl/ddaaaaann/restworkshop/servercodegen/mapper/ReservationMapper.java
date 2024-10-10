@@ -4,17 +4,14 @@ import nl.ddaaaaann.rest.hotel.model.ReservationCreateDto;
 import nl.ddaaaaann.rest.hotel.model.ReservationDto;
 import nl.ddaaaaann.restworkshop.servercodegen.model.Reservation;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
 
 
 @Mapper(componentModel = "spring")
 public interface ReservationMapper {
+  
+  ReservationDto toDto(Reservation model);
 
-  ReservationMapper INSTANCE = Mappers.getMapper(ReservationMapper.class);
+  Reservation toModel(ReservationDto dto);
 
-  ReservationDto toDto(Reservation entity);
-
-  Reservation toEntity(ReservationDto dto);
-
-  Reservation toEntity(ReservationCreateDto dto);
+  Reservation toModel(ReservationCreateDto dto);
 }
