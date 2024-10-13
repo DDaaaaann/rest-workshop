@@ -89,6 +89,17 @@ _An architectural style for designing networked applications._
 <sub><sup>[Source: Logius Standaard](https://gitdocumentatie.logius.nl/publicatie/api/adr/1.0/#http-methods)</sup></sub>
 
 
+## Exceptional cases
+
+<small>Custom methods / action-oriented endpoints / complex operations</small>
+
+Use verbs and _ to differentiate custom actions from standard operations
+
+- _rooms/{id}/\_book_
+- _guests/\_search_
+- _reservations/{id}/\_upgrade_
+
+
 # HTTP Responses
 
 ## Categories
@@ -165,6 +176,11 @@ paths:
 
 ```
 
+## Parameter types
+- **Path parameters:** _/rooms/{id}_
+- **Query parameters:** _/rooms?type=suite_
+- **Header parameters:** _X-MyHeader: Value_
+- **Cookie parameters:** _Cookie: csrftoken=BUSe35do..._
 
 # Visualizing the API World
 
@@ -202,6 +218,17 @@ paths:
 Clone repo: [rest-workshops](https://github.com/DDaaaaann/rest-workshop)
 
 Work in teams of two.
+
+## Exercise
+
+- Implement OpenAPI
+  - /guests
+  - /rooms
+  - /reservations
+  - /_search or /guests/_search
+- Generate Api
+- Generate Mappers
+- Implement Controllers
 
 ## Tips
 - Implement all TODO's
