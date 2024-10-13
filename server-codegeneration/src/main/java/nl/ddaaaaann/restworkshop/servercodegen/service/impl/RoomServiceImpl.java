@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import nl.ddaaaaann.restworkshop.servercodegen.model.Room;
+import nl.ddaaaaann.restworkshop.servercodegen.model.Room.RoomType;
 import nl.ddaaaaann.restworkshop.servercodegen.service.RoomService;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +44,13 @@ public class RoomServiceImpl implements RoomService {
   public List<Room> searchByRoomType(final String roomType) {
     return rooms.stream()
         .filter(room -> room.getType().name().equalsIgnoreCase(roomType))
+        .toList();
+  }
+
+  @Override
+  public List<Room> findAllByType(final RoomType type) {
+    return rooms.stream()
+        .filter(room -> room.getType().equals(type))
         .toList();
   }
 
