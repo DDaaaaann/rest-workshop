@@ -285,6 +285,19 @@ alt="Standard HTTP methods" /><br />
 href="https://gitdocumentatie.logius.nl/publicatie/api/adr/1.0/#http-methods">Source:
 Logius Standaard</a></sup></sub></p>
 </section>
+
+<section id="exceptional-cases" class="title-slide slide level2">
+<h2>Exceptional cases</h2>
+<p><small>Custom methods / action-oriented endpoints / complex
+operations</small></p>
+<p>Use verbs and _ to differentiate custom actions from standard
+operations</p>
+<ul>
+<li><em>rooms/{id}/_book</em></li>
+<li><em>guests/_search</em></li>
+<li><em>reservations/{id}/_upgrade</em></li>
+</ul>
+</section>
 </section>
 <section>
 <section id="http-responses" class="title-slide slide level1">
@@ -399,6 +412,17 @@ class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">&#39;404&#39;</span><span class="kw">:</span></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="at">          </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Guest not found</span></span></code></pre></div>
 </section>
+
+<section id="parameter-types" class="title-slide slide level2">
+<h2>Parameter types</h2>
+<ul>
+<li><strong>Path parameters:</strong> <em>/rooms/{id}</em></li>
+<li><strong>Query parameters:</strong> <em>/rooms?type=suite</em></li>
+<li><strong>Header parameters:</strong> <em>X-MyHeader: Value</em></li>
+<li><strong>Cookie parameters:</strong> <em>Cookie:
+csrftoken=BUSe35do…</em></li>
+</ul>
+</section>
 </section>
 <section>
 <section id="visualizing-the-api-world"
@@ -465,6 +489,22 @@ implementation, Hands-on session.</li>
 <p>Clone repo: <a
 href="https://github.com/DDaaaaann/rest-workshop">rest-workshops</a></p>
 <p>Work in teams of two.</p>
+</section>
+
+<section id="exercise" class="title-slide slide level2">
+<h2>Exercise</h2>
+<ul>
+<li>Implement OpenAPI
+<ul>
+<li>/guests</li>
+<li>/rooms</li>
+<li>/reservations</li>
+<li>/_search or /guests/_search</li>
+</ul></li>
+<li>Generate Api</li>
+<li>Generate Mappers</li>
+<li>Implement Controllers</li>
+</ul>
 </section>
 
 <section id="tips" class="title-slide slide level2">
