@@ -4,6 +4,12 @@ Accept: application/json
 
 ###
 
+### Get all suites
+GET http://localhost:8080/rooms?type=suit
+Accept: application/json
+
+###
+
 ### Get a specific room by ID (Room ID: 101)
 GET http://localhost:8080/rooms/101
 Accept: application/json
