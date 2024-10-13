@@ -148,6 +148,13 @@ paths:
       tags:
         - room
       operationId: getRooms
+      parameters:
+        - name: type
+          in: query
+          required: false
+          schema:
+            type: string
+          description: "Type of the room: [single, double, suite]"
       responses:
         '200':
           description: A list of rooms

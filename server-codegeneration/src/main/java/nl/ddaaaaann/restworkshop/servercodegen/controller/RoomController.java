@@ -7,6 +7,8 @@ import nl.ddaaaaann.rest.hotel.api.RoomApi;
 import nl.ddaaaaann.rest.hotel.model.RoomDto;
 import nl.ddaaaaann.restworkshop.servercodegen.exception.RoomNotFoundException;
 import nl.ddaaaaann.restworkshop.servercodegen.mapper.RoomMapper;
+import nl.ddaaaaann.restworkshop.servercodegen.model.Room;
+import nl.ddaaaaann.restworkshop.servercodegen.model.Room.RoomType;
 import nl.ddaaaaann.restworkshop.servercodegen.service.RoomService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,10 +29,19 @@ public class RoomController implements RoomApi {
   }
 
   @Override
-  public ResponseEntity<List<RoomDto>> getRooms() {
-    final List<RoomDto> rooms = roomService.findAll().stream()
+  public ResponseEntity<List<RoomDto>> getRooms(final String type) {
+    final List<Room> rooms;
+    if (type != null) {
+      final RoomType roomType = RoomType.valueOf(type.toUpperCase());
+      rooms = roomService.findAllByType(roomType);
+    } else {
+      rooms = roomService.findAll();
+    }
+
+    final List<RoomDto> roomDtos = rooms.stream()
         .map(roomMapper::toDto)
         .collect(Collectors.toList());
-    return ResponseEntity.ok(rooms);
+
+    return ResponseEntity.ok(roomDtos);
   }
 }
