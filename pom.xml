@@ -21,7 +21,8 @@
     <openapi-generator.version>3.3.2</openapi-generator.version>
     <jackson.version>2.17.2</jackson.version>
     <jackson-nullable.version>0.2.6</jackson-nullable.version>
-    <swagger-annotations.version>2.2.16</swagger-annotations.version>
+    <swagger-annotations-v3.version>2.2.16</swagger-annotations-v3.version>
+    <swagger-annotations.version>1.6.14</swagger-annotations.version>
     <jakarta-validation.version>3.0.2</jakarta-validation.version>
     <mapstruct.version>1.6.0.Beta1</mapstruct.version>
     <mapstruct-processor.version>1.5.2.Final</mapstruct-processor.version>
@@ -80,6 +81,11 @@
       </dependency>
       <dependency>
         <groupId>io.swagger.core.v3</groupId>
+        <artifactId>swagger-annotations</artifactId>
+        <version>${swagger-annotations-v3.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.swagger</groupId>
         <artifactId>swagger-annotations</artifactId>
         <version>${swagger-annotations.version}</version>
       </dependency>

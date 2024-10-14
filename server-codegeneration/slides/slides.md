@@ -5,11 +5,6 @@ subtitle: and the Art of Code Generation in an API-First Approach
 
 ---
 
-# Introduction
-
-- **Scenario**: Imagine a guest trying to book a hotel room...
-- **Expectations**: Learn about REST, API-First design, and practical implementation with OpenAPI.
-
 
 # Agenda
 
@@ -18,9 +13,7 @@ subtitle: and the Art of Code Generation in an API-First Approach
 - HTTP Methods and Responses
 - API-First Approach
 - Introduction to OpenAPI
-- Workshop Overview
-- Future Workshops
-- Q&A
+- Workshop
 
 # What is REST?
 
